@@ -112,8 +112,8 @@ if errorlevel 1 goto failed
 
 rem ---------------------------------------------------------- Start servers
 echo [5/5] Starting Django and Streamlit in separate windows...
-start "FinVault - Django" /D "%CD%" cmd /k ""%VENV_PY%" manage.py runserver 127.0.0.1:8000"
-start "FinVault - Streamlit" /D "%CD%" cmd /k ""%VENV_PY%" -m streamlit run streamlit_app\app.py --server.port 8501 --server.address 127.0.0.1 --server.headless true"
+start "AI Powered Product Assistant - Django" /D "%CD%" cmd /k ""%VENV_PY%" manage.py runserver 127.0.0.1:8000"
+start "AI Powered Product Assistant - Streamlit" /D "%CD%" cmd /k ""%VENV_PY%" -m streamlit run streamlit_app\app.py --server.port 8501 --server.address 127.0.0.1 --server.headless true"
 
 if "%OPEN_BROWSER%"=="1" (
     timeout /t 4 /nobreak >nul
