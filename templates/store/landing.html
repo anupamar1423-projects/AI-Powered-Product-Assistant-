@@ -1,0 +1,47 @@
+{% extends 'store/base.html' %}
+{% block title %}Welcome · Aster &amp; Oak{% endblock %}
+{% block content %}
+<section class="gate">
+  <div class="gate-art">
+    <div class="gate-wordmark">ASTER<br><span>&amp; OAK</span></div>
+    <div class="gate-caption">OBJECTS FOR<br>EVERYDAY LIVING <span>EST. MMXXIV</span></div>
+    <div class="gate-circle"></div>
+    <div class="gate-orbit"></div>
+  </div>
+  <div class="gate-panel">
+    <div class="eyebrow">A MORE CONSIDERED COLLECTION</div>
+    <h1>Good things,<br><em>well chosen.</em></h1>
+    <p class="lead-copy">Discover the pieces that make the everyday feel a little more special.</p>
+    <div class="auth-switch">
+      <button type="button" class="auth-tab {% if not signup_open %}active{% endif %}" data-target="login-panel">Sign in</button>
+      <button type="button" class="auth-tab {% if signup_open %}active{% endif %}" data-target="signup-panel">Create account</button>
+    </div>
+    <div id="login-panel" class="{% if signup_open %}d-none{% endif %}">
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% if form.errors %}<div class="alert alert-danger">Your username or password wasn’t recognized.</div>{% endif %}
+        <label class="form-label" for="login-username">Username</label>
+        <input class="form-control field-line" id="login-username" name="username" autocomplete="username" required>
+        <label class="form-label mt-3" for="login-password">Password</label>
+        <input class="form-control field-line" id="login-password" name="password" type="password" autocomplete="current-password" required>
+        <input type="hidden" name="next" value="{% url 'home' %}">
+        <button class="btn btn-dark w-100 mt-4 py-3">Enter the collection <span>→</span></button>
+      </form>
+    </div>
+    <div id="signup-panel" class="{% if not signup_open %}d-none{% endif %}">
+      {% if signup_form.errors %}<div class="alert alert-danger">{{ signup_form.errors }}</div>{% endif %}
+      <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <label class="form-label" for="signup-username">Username</label>
+        <input class="form-control field-line" id="signup-username" name="username" required autocomplete="username">
+        <label class="form-label mt-3" for="signup-password1">Password</label>
+        <input class="form-control field-line" id="signup-password1" type="password" name="password1" required autocomplete="new-password">
+        <label class="form-label mt-3" for="signup-password2">Confirm password</label>
+        <input class="form-control field-line" id="signup-password2" type="password" name="password2" required autocomplete="new-password">
+        <button class="btn btn-dark w-100 mt-4 py-3">Create your account <span>→</span></button>
+      </form>
+    </div>
+    <p class="fine-print mt-4">A quieter kind of shopping. Thoughtful goods for the spaces you call yours.</p>
+  </div>
+</section>
+{% endblock %}

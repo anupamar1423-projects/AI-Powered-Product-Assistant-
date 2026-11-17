@@ -1,0 +1,16 @@
+.env
+.venv*/
+db.sqlite3
+__pycache__/
+*.py[cod]
+.git/
+.gitignore
+media/
+staticfiles/
+ai_activity_log.txt
+outputs/
+work/
+.pytest_cache/
+*.zip
+Thumbs.db
+.DS_Store
